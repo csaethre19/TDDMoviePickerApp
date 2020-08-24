@@ -10,7 +10,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Random;
 import java.util.Set;
 
 public class MoviePicker {
@@ -53,10 +52,12 @@ public class MoviePicker {
 		}
 	}
 
+	// TODO - add functionality to look at a substring and compare parts of a string to movies in 
+	// 		the list to find a match. {mermaid -> The Little Mermaid}
 	public String lookUpMovie(String movie) {
 		String movieKey = "";
 		String genre = "";
-		String movieInfo = "";
+		String movieInfo = "<html>";
 
 		Set<String> keys = movies.keySet();
 		for (String k : keys) {
@@ -66,8 +67,8 @@ public class MoviePicker {
 		}
 		if (movieKey.equalsIgnoreCase(movie)) {
 			genre = movies.get(movieKey);
-			movieInfo = "Title: " + movieKey + "\nGenre: " + Character.toUpperCase(genre.charAt(0))
-				+ genre.substring(1);
+			movieInfo += "Title: " + movieKey + "<br>Genre: " + Character.toUpperCase(genre.charAt(0))
+				+ genre.substring(1) + "</html>";
 		}
 		else {
 			movieInfo = "Sorry your movie was not found.";

@@ -14,3 +14,4 @@ Romeo and Juliet,romance
 The Neverending Story,fantasy
 A Whisker Away,anime
 Howels Moving Castle,anime
+Spotlight,drama

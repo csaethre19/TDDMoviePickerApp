@@ -27,7 +27,7 @@ class TestMoviePicker {
 	void test_displayMovieTitleAndGenreOfFoundUserSelectedMovieAndMatchingLetterCase() {
 		String movie = "The Lincoln Lawyer";
 		String movieInfo = moviePicker.lookUpMovie(movie);
-		String expected = "Title: The Lincoln Lawyer\nGenre: Drama";
+		String expected = "<html>Title: The Lincoln Lawyer<br>Genre: Drama</html>";
 		assertEquals(expected, movieInfo);
 	}
 	
@@ -35,7 +35,7 @@ class TestMoviePicker {
 	void test_displayMovieTitleAndGenreOfFoundUserSelectedMovieAndMatchingLetterCase2() {
 		String movie = "the neverending Story";
 		String movieInfo = moviePicker.lookUpMovie(movie);
-		String expected = "Title: The Neverending Story\nGenre: Fantasy";
+		String expected = "<html>Title: The Neverending Story<br>Genre: Fantasy</html>";
 		assertEquals(expected, movieInfo);
 	}
 	
@@ -43,7 +43,7 @@ class TestMoviePicker {
 	void test_displayMovieTitleAndGenreOfFoundUserSelectedMovieAndNonMatchingLetterCase() {
 		String movie = "matrix";
 		String movieInfo = moviePicker.lookUpMovie(movie);
-		String expected = "Title: Matrix\nGenre: Action";
+		String expected = "<html>Title: Matrix<br>Genre: Action</html>";
 		assertEquals(expected, movieInfo);
 	}
 	
