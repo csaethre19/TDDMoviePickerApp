@@ -18,6 +18,7 @@ public class MoviePicker {
 	private String movie;
 	private List<String> randomMovies = new ArrayList<>();
 	private static int counter;
+	private int lines = 0;
 	
 	public MoviePicker() {
 		readMovies();
@@ -41,6 +42,7 @@ public class MoviePicker {
 			while ((nextMovie = bf.readLine()) != null) {
 				String[] movie = nextMovie.split(",");
 				movies.put(movie[0], movie[1]);
+				lines++;
 			}
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -106,13 +108,15 @@ public class MoviePicker {
 	}
 
 	public String generateRandomMovie() {
-		String randomMovie = randomMovies.get(counter);
-		if (counter < 16) {
+		String randomMovie = "";
+		if (counter < lines) {
+			randomMovie = randomMovies.get(counter);
 			counter++;
 		}
 		else {
 			Collections.shuffle(randomMovies);
 			counter = 0;
+			randomMovie = randomMovies.get(counter);
 		}
 
 		return randomMovie;
