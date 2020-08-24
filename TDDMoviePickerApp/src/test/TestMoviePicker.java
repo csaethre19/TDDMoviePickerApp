@@ -6,7 +6,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import moviePicker.MoviePicker;
-import moviePicker.MoviePickerApp;
 
 class TestMoviePicker {
 	MoviePicker moviePicker;
@@ -83,7 +82,7 @@ class TestMoviePicker {
 	void test_generateRandomMovieThatHasNotBeenSeenBefore() {
 		String prevMovie = moviePicker.generateRandomMovie();
 		String nextMovie = moviePicker.generateRandomMovie();
-		assertTrue(prevMovie != nextMovie);
+		assertTrue(!prevMovie.equals(nextMovie));
 	}
 
 }

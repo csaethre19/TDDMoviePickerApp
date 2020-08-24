@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -14,11 +15,16 @@ import java.util.Set;
 
 public class MoviePicker {
 	private HashMap<String, String> movies = new HashMap<>();
-	private List<String> seenMovies = new ArrayList<>();
 	private String movie;
+	private List<String> randomMovies = new ArrayList<>();
+	private static int counter;
 	
 	public MoviePicker() {
 		readMovies();
+		movies.forEach((k,v) -> {
+			randomMovies.add(k);
+		});
+		Collections.shuffle(randomMovies);
 	}
 	
 	public void setUserMovieInquery(String movie) {
@@ -99,21 +105,17 @@ public class MoviePicker {
 		return result;
 	}
 
-	//TODO FIX: When random number is the movie we are looking at but the movie was already seen
-	// we return null instead of generating a new random number and returning a movie every time.
 	public String generateRandomMovie() {
-		Random rand = new Random();
-		int num = rand.nextInt(16) + 1;
-		Set<String> moviesToPick = movies.keySet();
-		int i = 0;
-		for (String m : moviesToPick) {
-			if (i == num && !seenMovies.contains(m)) {
-				seenMovies.add(m);
-				return m;
-			}
-			i++;
+		String randomMovie = randomMovies.get(counter);
+		if (counter < 16) {
+			counter++;
 		}
-		return null;
+		else {
+			Collections.shuffle(randomMovies);
+			counter = 0;
+		}
+
+		return randomMovie;
 	}
 
 }
